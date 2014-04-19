@@ -1,0 +1,107 @@
+/*
+      Boilerplate Layout by Keith Donegan of Code-Sucks.com
+	  
+	  E-Mail: Keithdonegan@gmail.com
+	  
+	  You can do whatever you want with these layouts,
+	  but it would be greatly appreciated if you gave a link
+	  back to http://www.code-sucks.com
+	  
+*/
+
+* { padding: 0; margin: 0; }
+
+body {
+ overflow:auto;
+ color: #666;
+ font: 12px/20px Arial, Helvetica, sans-serif;
+ font-size: 13px;
+}
+
+#wrapper { 
+ margin: 10px auto;
+ width: 1000px;
+}
+
+h1{
+	font-weight:normal;
+	font-size: 30px;
+    line-height: 40px;
+}
+
+p{
+	font-size: 20px;
+	line-height: 20px;
+	
+}
+
+#canvas-container{
+	position:relative;
+	overflow:auto;
+}
+
+canvas#card{
+	background: #CCC;
+}
+
+button{
+	background: none no-repeat scroll 0 0 transparent;
+	background-position:center center;
+    border: medium none;
+    border-spacing: 0;
+    color: #26589F;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+	text-align:center;
+	z-index:2;
+	position:absolute;
+}
+
+#play{
+	width:120px;
+	height:120px;
+	top:230px;
+	left:440px;
+	background-image:url('../img/play.png');
+}
+
+#play:active{
+	background-image:url('../img/play-down.png');
+}
+
+#mute{
+	display:none;
+}
+
+.audio #mute{
+	display:block;
+	width:80px;
+	height:80px;
+	top:0;
+	right:0;
+	/*background-position: 20px 10px ;*/
+	background-color: #FFF;
+	background-image:url('../img/unmuted.png');
+	border-radius: 0 0 0 60px;
+	moz-border-radius: 0 0 0 60px;
+	webkit-border-radius: 0 0 0 60px;
+}
+
+#mute:active{
+	background-image:url('../img/unmuted-down.png');
+}
+
+#mute.muted{
+	background-image:url("../img/muted.png");
+}
+
+#mute.muted:active{
+	background-image:url("../img/muted-down.png");
+}
+
+audio{
+	display:none;
+}
