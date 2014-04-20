@@ -176,7 +176,7 @@ $( document ).ready(function() {
 			//pulse head size
 			ctx.save();
 			ctx.translate( hx, hy );
-			drawCharacter(catHead, -(hw-hw0), -(hh-hh0), hw, hh);
+			drawCharacter(catHead, 0, -(hh-hh0), hw, hh);
 			ctx.restore();
 		} else {
 			//reset width and height to natural size
