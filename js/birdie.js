@@ -1,4 +1,20 @@
 $( document ).ready(function() {
+	// create the audio context (chrome only for now)
+    if (! window.AudioContext) {
+        if (! window.webkitAudioContext) {
+            alert('no audiocontext found');
+        }
+        window.AudioContext = window.webkitAudioContext;
+    }
+	
+	//audio context variables
+	var context = new AudioContext();
+    var audioBuffer;
+    var sourceNode;
+    var splitter;
+    var analyser, analyser2;
+    var javascriptNode;
+	
 	var ctx;
 	var WIDTH;
 	var HEIGHT;
@@ -31,19 +47,6 @@ $( document ).ready(function() {
 	
 	
 	function init(){
-		// create the audio context (chrome only for now)
-	    if (! window.AudioContext) {
-	        if (! window.webkitAudioContext) {
-	            alert('no audiocontext found');
-	        }
-	        window.AudioContext = window.webkitAudioContext;
-	    }
-	    var context = new AudioContext();
-	    var audioBuffer;
-	    var sourceNode;
-	    var splitter;
-	    var analyser, analyser2;
-	    var javascriptNode;
 
 		//set canvas context
 		var canvas = (typeof(G_vmlCanvasManager) != 'undefined') ? G_vmlCanvasManager.initElement($("canvas#card")[0]) : $("canvas#card")[0];
@@ -80,7 +83,7 @@ $( document ).ready(function() {
 		if(typeof audioPlayer != 'undefined'){
 			//audioPlayer.play();
 		}
-		loadSound("../audio/bird.mp3");
+		loadSound("audio/bird.mp3");
 	}
 	
 	function draw(){
@@ -191,6 +194,11 @@ $( document ).ready(function() {
     function playSound(buffer) {
         sourceNode.buffer = buffer;
         sourceNode.start(0);
+    }
+
+	// log if an error occurs
+    function onError(e) {
+        console.log(e);
     }
 	
 	init(); 
