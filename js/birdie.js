@@ -144,19 +144,27 @@ $( document ).ready(function() {
 			drawCharacter(catBody, bx, by, bw, bh);
 		}
 		*/
-		//draw head
-		drawCharacter(catHead, hx, hy, hw, hh);
 		
 		//draw tail
 		if(averageVolume > 0){
 			ctx.save();
 			ctx.translate(tx, (ty+th));
-			ctx.rotate((averageVolume-volumeCenter)*Math.PI/180);
+			ctx.rotate((averageVolume - volumeCenter)*Math.PI/180);
 			ctx.translate(0, -th);
 			drawCharacter(catTail, 0, 0, tw, th);
 			ctx.restore();
 		} else {
 			drawCharacter(catTail, tx, ty, tw, th);
+		}
+		
+		//draw head
+		if(averageVolume - volumeCenter > 0){
+			ctx.save();
+			ctx.translate( (hx+(hw/2)), (hy+(hh/2)) );
+			drawCharacter(catHead, -(hw/2), -(hh/2), hw, hh);
+			ctx.restore();
+		} else {
+			drawCharacter(catHead, hx, hy, hw, hh);
 		}
 
 		//draw body
