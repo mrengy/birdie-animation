@@ -32,8 +32,8 @@ $( document ).ready(function() {
 
 	var catBody = new Image();
 	catBody.src = 'img/body.png';
-	var bx = bx0 = 100;
-	var by = by0 = 100;
+	var bx = bx0 = 245;
+	var by = by0 = 750-543;
 	var bw;
 	var bh;
 	//set natural width and natural height once the image is loaded
@@ -51,8 +51,8 @@ $( document ).ready(function() {
 	
 	var catHead = new Image();
 	catHead.src = 'img/head.png';
-	var hx = hx0 = 100;
-	var hy = hy0 = 100;
+	var hx = hx0 = 486;
+	var hy = hy0 = 750-524;
 	var hw;
 	var hh;
 	//set natural width and natural height once the image is loaded
@@ -70,8 +70,8 @@ $( document ).ready(function() {
 	
 	var catTail = new Image();
 	catTail.src = 'img/tail.png';
-	var tx = tx0 = 100;
-	var ty = ty0 = 100;
+	var tx = tx0 = 320;
+	var ty = ty0 = 750-642;
 	var tw;
 	var th;
 	//set natural width and natural height once the image is loaded
@@ -132,7 +132,8 @@ $( document ).ready(function() {
 		frame ++;
 		clear();
 		
-		//draw cat body
+		//draw cat body and rotate
+		/*
 		if(averageVolume > 0){
 			ctx.translate(bx, by);
 			ctx.rotate((averageVolume-volumeCenter)*Math.PI/180);
@@ -142,6 +143,10 @@ $( document ).ready(function() {
 		} else {
 			drawCharacter(catBody, bx, by, bw, bh);
 		}
+		*/
+		drawCharacter(catHead, hx, hy, hw, hh);
+		drawCharacter(catTail, tx, ty, tw, th);
+		drawCharacter(catBody, bx, by, bw, bh);
 		
 		// create the meters
         /*
