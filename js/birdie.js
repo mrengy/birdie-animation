@@ -144,8 +144,21 @@ $( document ).ready(function() {
 			drawCharacter(catBody, bx, by, bw, bh);
 		}
 		*/
+		//draw head
 		drawCharacter(catHead, hx, hy, hw, hh);
-		drawCharacter(catTail, tx, ty, tw, th);
+		
+		//draw tail
+		if(averageVolume > 0){
+			ctx.translate(tx, (ty+th));
+			ctx.rotate((averageVolume-volumeCenter)*Math.PI/180);
+			drawCharacter(catTail, (-tw/2), (-th/2), tw, th);
+			ctx.rotate(-(averageVolume-volumeCenter)*Math.PI/180);
+			ctx.translate(-tx, -(ty+th));
+		} else {
+			drawCharacter(catTail, tx, ty, tw, th);
+		}
+
+		//draw body
 		drawCharacter(catBody, bx, by, bw, bh);
 		
 		// create the meters
