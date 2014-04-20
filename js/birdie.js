@@ -98,7 +98,13 @@ $( document ).ready(function() {
 		// create the meters
         ctx.fillRect(0,130-averageVolume,25,130);
         ctx.fillRect(30,130-averageVolume2,25,130);
-	
+
+		//show audio levels
+		/*
+		console.log(averageVolume);
+		console.log(averageVolume2);
+		*/
+		
 		/*
 		//create a new random emflake
 		emflakew = getRandomInt(50, ew);
