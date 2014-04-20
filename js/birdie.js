@@ -25,25 +25,65 @@ $( document ).ready(function() {
 	
 	var increment = 1;
 	
+	var volumeCenter = 87;
+	
 	var audioPlayer;
 	var playerMuted = false;
 
-	var catbody = new Image();
-	catbody.src = 'img/body.png';
+	var catBody = new Image();
+	catBody.src = 'img/body.png';
 	var bx = bx0 = 100;
 	var by = by0 = 100;
 	var bw;
 	var bh;
 	//set natural width and natural height once the image is loaded
-	if (catbody.addEventListener){
-		catbody.addEventListener('load', function(){
-			bw = catbody.naturalWidth;
-			bh = catbody.naturalHeight;
+	if (catBody.addEventListener){
+		catBody.addEventListener('load', function(){
+			bw = catBody.naturalWidth;
+			bh = catBody.naturalHeight;
 		}, false);
-	} else if (catbody.attachEvent){
-		catbody.attachEvent('onload', function(){
-			bw = catbody.naturalWidth;
-			bh = catbody.naturalHeight;
+	} else if (catBody.attachEvent){
+		catBody.attachEvent('onload', function(){
+			bw = catBody.naturalWidth;
+			bh = catBody.naturalHeight;
+		});
+	}
+	
+	var catHead = new Image();
+	catHead.src = 'img/head.png';
+	var hx = hx0 = 100;
+	var hy = hy0 = 100;
+	var hw;
+	var hh;
+	//set natural width and natural height once the image is loaded
+	if (catHead.addEventListener){
+		catHead.addEventListener('load', function(){
+			hw = catHead.naturalWidth;
+			hh = catHead.naturalHeight;
+		}, false);
+	} else if (catHead.attachEvent){
+		catHead.attachEvent('onload', function(){
+			hw = catHead.naturalWidth;
+			hh = catHead.naturalHeight;
+		});
+	}
+	
+	var catTail = new Image();
+	catTail.src = 'img/tail.png';
+	var tx = tx0 = 100;
+	var ty = ty0 = 100;
+	var tw;
+	var th;
+	//set natural width and natural height once the image is loaded
+	if (catTail.addEventListener){
+		catTail.addEventListener('load', function(){
+			tw = catTail.naturalWidth;
+			th = catTail.naturalHeight;
+		}, false);
+	} else if (catTail.attachEvent){
+		catTail.attachEvent('onload', function(){
+			tw = catTail.naturalWidth;
+			th = catTail.naturalHeight;
 		});
 	}
 	
@@ -93,12 +133,15 @@ $( document ).ready(function() {
 		clear();
 		
 		//draw cat body
-		ctx.translate(bx, by);
-		ctx.rotate((averageVolume-87)*Math.PI/180);
-		drawCharacter(catbody, bx, by, bw, bh);
-		ctx.rotate(-(averageVolume-87)*Math.PI/180);
-		ctx.translate(-bx, -by);
-		
+		if(averageVolume > 0){
+			ctx.translate(bx, by);
+			ctx.rotate((averageVolume-volumeCenter)*Math.PI/180);
+			drawCharacter(catBody, bx, by, bw, bh);
+			ctx.rotate(-(averageVolume-volumeCenter)*Math.PI/180);
+			ctx.translate(-bx, -by);
+		} else {
+			drawCharacter(catBody, bx, by, bw, bh);
+		}
 		
 		// create the meters
         /*
