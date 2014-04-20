@@ -149,11 +149,12 @@ $( document ).ready(function() {
 		
 		//draw tail
 		if(averageVolume > 0){
+			ctx.save();
 			ctx.translate(tx, (ty+th));
 			ctx.rotate((averageVolume-volumeCenter)*Math.PI/180);
-			drawCharacter(catTail, (-tw/2), (-th/2), tw, th);
-			ctx.rotate(-(averageVolume-volumeCenter)*Math.PI/180);
-			ctx.translate(-tx, -(ty+th));
+			ctx.translate(0, -th);
+			drawCharacter(catTail, 0, 0, tw, th);
+			ctx.restore();
 		} else {
 			drawCharacter(catTail, tx, ty, tw, th);
 		}
