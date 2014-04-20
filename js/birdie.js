@@ -94,6 +94,10 @@ $( document ).ready(function() {
 		
 		//draw cat body
 		drawCharacter(catbody, bx, by, bw, bh);
+		
+		// create the meters
+        ctx.fillRect(0,130-averageVolume,25,130);
+        ctx.fillRect(30,130-averageVolume2,25,130);
 	
 		/*
 		//create a new random emflake
@@ -226,10 +230,6 @@ $( document ).ready(function() {
 
         // clear the current state
         //ctx.clearRect(0, 0, 60, 130);
-
-        // create the meters
-        ctx.fillRect(0,130-averageVolume,25,130);
-        ctx.fillRect(30,130-averageVolume2,25,130);
     }
 
     function getAverageVolume(array) {
