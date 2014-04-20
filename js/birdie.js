@@ -93,12 +93,19 @@ $( document ).ready(function() {
 		clear();
 		
 		//draw cat body
+		ctx.translate(bx, by);
+		ctx.rotate((averageVolume-87)*Math.PI/180);
 		drawCharacter(catbody, bx, by, bw, bh);
+		ctx.rotate(-(averageVolume-87)*Math.PI/180);
+		ctx.translate(-bx, -by);
+		
 		
 		// create the meters
-        ctx.fillRect(0,130-averageVolume,25,130);
+        /*
+		ctx.fillRect(0,130-averageVolume,25,130);
         ctx.fillRect(30,130-averageVolume2,25,130);
-
+		*/
+		
 		//show audio levels
 		/*
 		console.log(averageVolume);
