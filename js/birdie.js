@@ -31,7 +31,21 @@ $( document ).ready(function() {
 	
 	
 	function init(){
-		//set context
+		// create the audio context (chrome only for now)
+	    if (! window.AudioContext) {
+	        if (! window.webkitAudioContext) {
+	            alert('no audiocontext found');
+	        }
+	        window.AudioContext = window.webkitAudioContext;
+	    }
+	    var context = new AudioContext();
+	    var audioBuffer;
+	    var sourceNode;
+	    var splitter;
+	    var analyser, analyser2;
+	    var javascriptNode;
+
+		//set canvas context
 		var canvas = (typeof(G_vmlCanvasManager) != 'undefined') ? G_vmlCanvasManager.initElement($("canvas#card")[0]) : $("canvas#card")[0];
 		ctx = canvas.getContext('2d');
 	    ctx.font = "20.0px Arial, Helvetica, sans-serif";
@@ -64,8 +78,9 @@ $( document ).ready(function() {
 		
 		//only play audio if the browser supports it. Thanks, Microsoft 
 		if(typeof audioPlayer != 'undefined'){
-			audioPlayer.play();
+			//audioPlayer.play();
 		}
+		loadSound("../audio/bird.mp3");
 	}
 	
 	function draw(){
@@ -113,7 +128,76 @@ $( document ).ready(function() {
 		ctx.fillRect(100, 100, 10, 10);
 	}
 	
+	function setupAudioNodes() {
+
+        // setup a javascript node
+        javascriptNode = context.createScriptProcessor(2048, 1, 1);
+        // connect to destination, else it isn't called
+        javascriptNode.connect(context.destination);
+
+
+        // setup a analyzer
+        analyser = context.createAnalyser();
+        analyser.smoothingTimeConstant = 0.3;
+        analyser.fftSize = 1024;
+
+        analyser2 = context.createAnalyser();
+        analyser2.smoothingTimeConstant = 0.0;
+        analyser2.fftSize = 1024;
+
+        // create a buffer source node
+        sourceNode = context.createBufferSource();
+        splitter = context.createChannelSplitter();
+
+        // connect the source to the analyser and the splitter
+        sourceNode.connect(splitter);
+
+        // connect one of the outputs from the splitter to
+        // the analyser
+        splitter.connect(analyser,0,0);
+        splitter.connect(analyser2,1,0);
+
+        // connect the splitter to the javascriptnode
+        // we use the javascript node to draw at a
+        // specific interval.
+        analyser.connect(javascriptNode);
+
+//        splitter.connect(context.destination,0,0);
+//        splitter.connect(context.destination,0,1);
+
+        // and connect to destination
+        sourceNode.connect(context.destination);
+    }
+
+    // load the specified sound
+    function loadSound(url) {
+        var request = new XMLHttpRequest();
+        request.open('GET', url, true);
+        request.responseType = 'arraybuffer';
+
+        // When loaded decode the data
+        request.onload = function() {
+
+            // decode the data
+            context.decodeAudioData(request.response, function(buffer) {
+                // when the audio is decoded play the sound
+                playSound(buffer);
+            }, onError);
+        }
+        request.send();
+    }
+
+
+    function playSound(buffer) {
+        sourceNode.buffer = buffer;
+        sourceNode.start(0);
+    }
+	
 	init(); 
+	
+	// load the sound
+    setupAudioNodes();
+    //loadSound("../audio/bird.mp3");
 	
 	$('button#play').on('click', startDrawing );
 	$('button#mute').on('click', toggleMute );
