@@ -51,20 +51,22 @@ $( document ).ready(function() {
 	
 	var catHead = new Image();
 	catHead.src = 'img/head.png';
-	var hx = hx0 = 486;
-	var hy = hy0 = 750-524;
+	var hx = 486;
+	var hy = 750-524;
 	var hw;
 	var hh;
+	var hw0;
+	var hh0;
 	//set natural width and natural height once the image is loaded
 	if (catHead.addEventListener){
 		catHead.addEventListener('load', function(){
-			hw = catHead.naturalWidth;
-			hh = catHead.naturalHeight;
+			hw = hw0 = catHead.naturalWidth;
+			hh = hh0 = catHead.naturalHeight;
 		}, false);
 	} else if (catHead.attachEvent){
 		catHead.attachEvent('onload', function(){
-			hw = catHead.naturalWidth;
-			hh = catHead.naturalHeight;
+			hw = hw0 = catHead.naturalWidth;
+			hh = hh0 = catHead.naturalHeight;
 		});
 	}
 	
@@ -159,11 +161,27 @@ $( document ).ready(function() {
 		
 		//draw head
 		if(averageVolume - volumeCenter > 0){
+			//increase head width based on volume
+			hw = hw0 + (averageVolume - volumeCenter);
+			//set head height proportionally to head width
+			hh = (hw * (hh0 / hw0) );
+			
+			/*
+			var headRatio = (hh0 / hw0);
+			console.log('headRatio = '+headRatio);
+			console.log('hw = '+hw);
+			console.log('hh = '+hh);
+			*/
+			
+			//pulse head size
 			ctx.save();
 			ctx.translate( (hx+(hw/2)), (hy+(hh/2)) );
 			drawCharacter(catHead, -(hw/2), -(hh/2), hw, hh);
 			ctx.restore();
 		} else {
+			//reset width and height to natural size
+			hw = hw0;
+			hh = hh0;
 			drawCharacter(catHead, hx, hy, hw, hh);
 		}
 
