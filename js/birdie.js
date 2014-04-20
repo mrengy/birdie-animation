@@ -14,6 +14,8 @@ $( document ).ready(function() {
     var splitter;
     var analyser, analyser2;
     var javascriptNode;
+
+	var averageVolume = averageVolume2 = 0;
 	
 	var ctx;
 	var WIDTH;
@@ -206,6 +208,44 @@ $( document ).ready(function() {
 	// load the sound
     setupAudioNodes();
     //loadSound("../audio/bird.mp3");
+
+	// when the javascript node is called
+    // we use information from the analyzer node
+    // to draw the volume
+    javascriptNode.onaudioprocess = function() {
+
+        // get the average for the first channel
+        var array =  new Uint8Array(analyser.frequencyBinCount);
+        analyser.getByteFrequencyData(array);
+        averageVolume = getAverageVolume(array);
+
+        // get the average for the second channel
+        var array2 =  new Uint8Array(analyser2.frequencyBinCount);
+        analyser2.getByteFrequencyData(array2);
+        averageVolume2 = getAverageVolume(array2);
+
+        // clear the current state
+        //ctx.clearRect(0, 0, 60, 130);
+
+        // create the meters
+        ctx.fillRect(0,130-averageVolume,25,130);
+        ctx.fillRect(30,130-averageVolume2,25,130);
+    }
+
+    function getAverageVolume(array) {
+        var values = 0;
+        var average;
+
+        var length = array.length;
+
+        // get all the frequency amplitudes
+        for (var i = 0; i < length; i++) {
+            values += array[i];
+        }
+
+        average = values / length;
+        return average;
+    }
 	
 	$('button#play').on('click', startDrawing );
 	$('button#mute').on('click', toggleMute );
