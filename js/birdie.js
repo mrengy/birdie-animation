@@ -26,9 +26,6 @@ $( document ).ready(function() {
 	var increment = 1;
 	
 	var volumeCenter = 87;
-	
-	var audioPlayer;
-	var playerMuted = false;
 
 	var catBody = new Image();
 	catBody.src = 'img/body.png';
@@ -98,54 +95,19 @@ $( document ).ready(function() {
 	    ctx.font = "20.0px Arial, Helvetica, sans-serif";
 		WIDTH = $("canvas#card").width();
 		HEIGHT = $("canvas#card").height();
-		
-		audioPlayer = $('.audio audio')[0];
-	}
-	
-	function toggleMute(){
-		if(playerMuted == false){ 
-			//variable to force iOS to know that the icon is supposed to be shown in the muted state, even though it doesn't respect actually muting
-			playerMuted = true;
-			
-			$('button#mute').addClass('muted');
-			
-			//actually mutes the audio
-			audioPlayer.muted = true;
-		}
-		else{ 
-			playerMuted = false;
-			$('button#mute').removeClass('muted');
-			audioPlayer.muted = false;
-		}
 	}
 	
 	function startDrawing(){
 		$('button#play').hide();
 		intervalId = setInterval(draw, 10);
 		
-		//only play audio if the browser supports it. Thanks, Microsoft 
-		if(typeof audioPlayer != 'undefined'){
-			//audioPlayer.play();
-		}
-		loadSound("audio/bird.mp3");
+		//loadSound("audio/bird.mp3");
+		loadSound("audio/bird.wav");
 	}
 	
 	function draw(){
 		frame ++;
 		clear();
-		
-		//draw cat body and rotate
-		/*
-		if(averageVolume > 0){
-			ctx.translate(bx, by);
-			ctx.rotate((averageVolume-volumeCenter)*Math.PI/180);
-			drawCharacter(catBody, bx, by, bw, bh);
-			ctx.rotate(-(averageVolume-volumeCenter)*Math.PI/180);
-			ctx.translate(-bx, -by);
-		} else {
-			drawCharacter(catBody, bx, by, bw, bh);
-		}
-		*/
 		
 		//draw tail
 		if(averageVolume > 0){
@@ -233,11 +195,6 @@ $( document ).ready(function() {
 	    return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 	
-	function drawRect(){
-		/* draw a rectangle just for debugging purposes */
-		ctx.fillRect(100, 100, 10, 10);
-	}
-	
 	function setupAudioNodes() {
 
         // setup a javascript node
@@ -310,9 +267,7 @@ $( document ).ready(function() {
 	
 	init(); 
 	
-	// load the sound
     setupAudioNodes();
-    //loadSound("../audio/bird.mp3");
 
 	// when the javascript node is called
     // we use information from the analyzer node
@@ -349,6 +304,5 @@ $( document ).ready(function() {
     }
 	
 	$('button#play').on('click', startDrawing );
-	$('button#mute').on('click', toggleMute );
 //end document ready	
 });
