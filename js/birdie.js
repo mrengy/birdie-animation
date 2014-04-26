@@ -127,9 +127,7 @@ $( document ).ready(function() {
 		if(typeof audioPlayer != 'undefined'){
 			//audioPlayer.play();
 		}
-		//loadSound("audio/bird.mp3");
-		loadSound("audio/bird.wav");
-		//loadSound("audio/insane.wav");
+		loadSound("audio/bird.mp3");
 	}
 	
 	function draw(){
@@ -243,7 +241,7 @@ $( document ).ready(function() {
 	function setupAudioNodes() {
 
         // setup a javascript node
-        javascriptNode = context.createScriptProcessor(1024, 1, 1);
+        javascriptNode = context.createScriptProcessor(2048, 1, 1);
         // connect to destination, else it isn't called
         javascriptNode.connect(context.destination);
 
