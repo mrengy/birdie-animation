@@ -304,6 +304,5 @@ $( document ).ready(function() {
     }
 	
 	$('button#play').on('click', startDrawing );
-	$('button#mute').on('click', toggleMute );
 //end document ready	
 });
