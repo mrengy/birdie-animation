@@ -95,18 +95,20 @@ $( document ).ready(function() {
 	    ctx.font = "20.0px Arial, Helvetica, sans-serif";
 		WIDTH = $("canvas#card").width();
 		HEIGHT = $("canvas#card").height();
-	}
-	
-	function startDrawing(){
-		$('button#play').hide();
-		intervalId = setInterval(draw, 10);
 		
 		//load the wav only if we need it, otherwise load the mp3
 		if (typeof window.waapisimContexts != 'undefined'){
 			loadSound("audio/bird.wav");
 		} else {
 			loadSound("audio/bird.mp3");
+			console.log ('loaded mp3');
 		}
+	}
+	
+	function startDrawing(){
+		$('button#play').hide();
+		intervalId = setInterval(draw, 10);
+		
 	}
 	
 	function draw(){
@@ -251,7 +253,7 @@ $( document ).ready(function() {
 
             // decode the data
             context.decodeAudioData(request.response, function(buffer) {
-                // when the audio is decoded play the sound
+                // when the audio is decoded, play the sound
                 playSound(buffer);
             }, onError);
         }
