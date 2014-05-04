@@ -101,8 +101,12 @@ $( document ).ready(function() {
 		$('button#play').hide();
 		intervalId = setInterval(draw, 10);
 		
-		//loadSound("audio/bird.mp3");
-		loadSound("audio/bird.wav");
+		//load the wav only if we need it, otherwise load the mp3
+		if (typeof window.waapisimContexts != 'undefined'){
+			loadSound("audio/bird.wav");
+		} else {
+			loadSound("audio/bird.mp3");
+		}
 	}
 	
 	function draw(){
