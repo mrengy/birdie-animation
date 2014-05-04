@@ -14,7 +14,6 @@ $( document ).ready(function() {
     var splitter;
     var analyser, analyser2;
     var javascriptNode;
-	var request = new XMLHttpRequest();
 
 	var averageVolume = averageVolume2 = 0;
 	
@@ -96,33 +95,18 @@ $( document ).ready(function() {
 	    ctx.font = "20.0px Arial, Helvetica, sans-serif";
 		WIDTH = $("canvas#card").width();
 		HEIGHT = $("canvas#card").height();
+	}
+	
+	function startDrawing(){
+		$('button#play').hide();
+		intervalId = setInterval(draw, 10);
 		
 		//load the wav only if we need it, otherwise load the mp3
 		if (typeof window.waapisimContexts != 'undefined'){
 			loadSound("audio/bird.wav");
 		} else {
 			loadSound("audio/bird.mp3");
-			console.log ('loaded mp3');
 		}
-	}
-	
-	function startDrawing(){
-		$('button#play').hide();
-		
-		// When audio is loaded, decode the data and play the song
-        request.onload = function() {
-
-            // decode the data
-            context.decodeAudioData(request.response, function(buffer) {
-                // when the audio is decoded, play the sound
-                playSound(buffer);
-            }, onError);
-        }
-        request.send();
-		
-		//set interval to draw the artwork
-		intervalId = setInterval(draw, 10);
-		
 	}
 	
 	function draw(){
@@ -258,9 +242,20 @@ $( document ).ready(function() {
 
     // load the specified sound
     function loadSound(url) {
-  		//references global request variable
+        var request = new XMLHttpRequest();
         request.open('GET', url, true);
         request.responseType = 'arraybuffer';
+
+        // When loaded decode the data
+        request.onload = function() {
+
+            // decode the data
+            context.decodeAudioData(request.response, function(buffer) {
+                // when the audio is decoded play the sound
+                playSound(buffer);
+            }, onError);
+        }
+        request.send();
     }
 
 
