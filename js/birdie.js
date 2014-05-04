@@ -26,6 +26,14 @@ $( document ).ready(function() {
 	var increment = 1;
 	
 	var volumeCenter = 87;
+	
+	//wave variables
+
+		//amount to move waves
+		var waveOffset = 0;
+	
+		//pixels between peaks of waves
+		var waveInterval = 100;
 
 	var catBody = new Image();
 	catBody.src = 'img/body.png';
@@ -113,43 +121,47 @@ $( document ).ready(function() {
 		frame ++;
 		clear();
 		
+		if (waveOffset == 100) waveOffset = 0;
+		
 		// waves/Path
 	      ctx.save();
 	      ctx.beginPath();
-	      ctx.moveTo(170.0, 510.0);
-	      ctx.bezierCurveTo(150.0, 530.0, 170.0, 550.0, 200.0, 550.0);
-	      ctx.bezierCurveTo(230.0, 550.0, 230.0, 510.0, 270.0, 510.0);
-	      ctx.bezierCurveTo(250.0, 530.0, 270.0, 550.0, 300.0, 550.0);
-	      ctx.bezierCurveTo(330.0, 550.0, 330.0, 510.0, 370.0, 510.0);
-	      ctx.bezierCurveTo(350.0, 530.0, 370.0, 550.0, 400.0, 550.0);
-	      ctx.bezierCurveTo(430.0, 550.0, 430.0, 510.0, 470.0, 510.0);
-	      ctx.bezierCurveTo(450.0, 530.0, 470.0, 550.0, 500.0, 550.0);
-	      ctx.bezierCurveTo(530.0, 550.0, 530.0, 510.0, 570.0, 510.0);
-	      ctx.bezierCurveTo(550.0, 530.0, 570.0, 550.0, 600.0, 550.0);
-	      ctx.bezierCurveTo(630.0, 550.0, 630.0, 510.0, 670.0, 510.0);
-	      ctx.bezierCurveTo(650.0, 530.0, 670.0, 550.0, 700.0, 550.0);
-	      ctx.bezierCurveTo(730.0, 550.0, 730.0, 510.0, 770.0, 510.0);
-	      ctx.bezierCurveTo(750.0, 530.0, 770.0, 550.0, 800.0, 550.0);
-	      ctx.bezierCurveTo(830.0, 550.0, 830.0, 510.0, 870.0, 510.0);
-	      ctx.bezierCurveTo(850.0, 530.0, 870.0, 550.0, 900.0, 550.0);
-	      ctx.bezierCurveTo(930.0, 550.0, 930.0, 510.0, 970.0, 510.0);
-	      ctx.bezierCurveTo(950.0, 530.0, 970.0, 550.0, 1000.0, 550.0);
-	      ctx.bezierCurveTo(1030.0, 550.0, 1030.0, 510.0, 1070.0, 510.0);
-	      ctx.bezierCurveTo(1050.0, 530.0, 1070.0, 550.0, 1100.0, 550.0);
-	      ctx.bezierCurveTo(1130.0, 550.0, 1130.0, 510.0, 1170.0, 510.0);
-	      ctx.bezierCurveTo(1150.0, 530.0, 1170.0, 550.0, 1200.0, 550.0);
-	      ctx.bezierCurveTo(1230.0, 550.0, 1230.0, 510.0, 1270.0, 510.0);
-	      ctx.bezierCurveTo(1250.0, 530.0, 1270.0, 550.0, 1300.0, 550.0);
-	      ctx.bezierCurveTo(1300.0, 570.0, 1300.0, 820.0, 1300.0, 820.0);
-	      ctx.lineTo(0.0, 820.0);
-	      ctx.lineTo(0.0, 550.0);
-	      ctx.bezierCurveTo(30.0, 550.0, 30.0, 510.0, 70.0, 510.0);
-	      ctx.bezierCurveTo(50.0, 530.0, 70.0, 550.0, 100.0, 550.0);
-	      ctx.bezierCurveTo(130.0, 550.0, 130.0, 510.0, 170.0, 510.0);
+	      ctx.moveTo(170.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(150.0 + waveOffset, 530.0, 170.0 + waveOffset, 550.0, 200.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(230.0 + waveOffset, 550.0, 230.0 + waveOffset, 510.0, 270.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(250.0 + waveOffset, 530.0, 270.0 + waveOffset, 550.0, 300.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(330.0 + waveOffset, 550.0, 330.0 + waveOffset, 510.0, 370.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(350.0 + waveOffset, 530.0, 370.0 + waveOffset, 550.0, 400.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(430.0 + waveOffset, 550.0, 430.0 + waveOffset, 510.0, 470.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(450.0 + waveOffset, 530.0, 470.0 + waveOffset, 550.0, 500.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(530.0 + waveOffset, 550.0, 530.0 + waveOffset, 510.0, 570.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(550.0 + waveOffset, 530.0, 570.0 + waveOffset, 550.0, 600.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(630.0 + waveOffset, 550.0, 630.0 + waveOffset, 510.0, 670.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(650.0 + waveOffset, 530.0, 670.0 + waveOffset, 550.0, 700.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(730.0 + waveOffset, 550.0, 730.0 + waveOffset, 510.0, 770.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(750.0 + waveOffset, 530.0, 770.0 + waveOffset, 550.0, 800.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(830.0 + waveOffset, 550.0, 830.0 + waveOffset, 510.0, 870.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(850.0 + waveOffset, 530.0, 870.0 + waveOffset, 550.0, 900.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(930.0 + waveOffset, 550.0, 930.0 + waveOffset, 510.0, 970.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(950.0 + waveOffset, 530.0, 970.0 + waveOffset, 550.0, 1000.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(1030.0 + waveOffset, 550.0, 1030.0 + waveOffset, 510.0, 1070.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(1050.0 + waveOffset, 530.0, 1070.0 + waveOffset, 550.0, 1100.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(1130.0 + waveOffset, 550.0, 1130.0 + waveOffset, 510.0, 1170.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(1150.0 + waveOffset, 530.0, 1170.0 + waveOffset, 550.0, 1200.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(1230.0 + waveOffset, 550.0, 1230.0 + waveOffset, 510.0, 1270.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(1250.0 + waveOffset, 530.0, 1270.0 + waveOffset, 550.0, 1300.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(1300.0 + waveOffset, 570.0, 1300.0 + waveOffset, 820.0, 1300.0 + waveOffset, 820.0);
+	      ctx.lineTo(0.0 + waveOffset, 820.0);
+	      ctx.lineTo(0.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(30.0 + waveOffset, 550.0, 30.0 + waveOffset, 510.0, 70.0 + waveOffset, 510.0);
+	      ctx.bezierCurveTo(50.0 + waveOffset, 530.0, 70.0 + waveOffset, 550.0, 100.0 + waveOffset, 550.0);
+	      ctx.bezierCurveTo(130.0 + waveOffset, 550.0, 130.0 + waveOffset, 510.0, 170.0 + waveOffset, 510.0);
 	      ctx.closePath();
 	      ctx.fillStyle = "rgb(30, 193, 249)";
 	      ctx.fill();
 	      ctx.restore();
+		
+		waveOffset ++;
 		
 		//draw tail
 		if(averageVolume > 0){
