@@ -14,6 +14,7 @@ $( document ).ready(function() {
     var splitter;
     var analyser, analyser2;
     var javascriptNode;
+	var request = new XMLHttpRequest();
 
 	var averageVolume = averageVolume2 = 0;
 	
@@ -107,6 +108,19 @@ $( document ).ready(function() {
 	
 	function startDrawing(){
 		$('button#play').hide();
+		
+		// When audio is loaded, decode the data and play the song
+        request.onload = function() {
+
+            // decode the data
+            context.decodeAudioData(request.response, function(buffer) {
+                // when the audio is decoded, play the sound
+                playSound(buffer);
+            }, onError);
+        }
+        request.send();
+		
+		//set interval to draw the artwork
 		intervalId = setInterval(draw, 10);
 		
 	}
@@ -244,20 +258,9 @@ $( document ).ready(function() {
 
     // load the specified sound
     function loadSound(url) {
-        var request = new XMLHttpRequest();
+  		//references global request variable
         request.open('GET', url, true);
         request.responseType = 'arraybuffer';
-
-        // When loaded decode the data
-        request.onload = function() {
-
-            // decode the data
-            context.decodeAudioData(request.response, function(buffer) {
-                // when the audio is decoded, play the sound
-                playSound(buffer);
-            }, onError);
-        }
-        request.send();
     }
 
 
