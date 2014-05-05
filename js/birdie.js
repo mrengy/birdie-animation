@@ -49,8 +49,8 @@ $( document ).ready(function() {
 
 	var catBody = new Image();
 	catBody.src = 'img/body.png';
-	var bx = bx0 = 245;
-	var by = by0 = 750-543;
+	var bx = bx0 = 274;
+	var by = by0 = 750-481;
 	var bw;
 	var bh;
 	//set natural width and natural height once the image is loaded
@@ -103,6 +103,25 @@ $( document ).ready(function() {
 		catTail.attachEvent('onload', function(){
 			tw = catTail.naturalWidth;
 			th = catTail.naturalHeight;
+		});
+	}
+	
+	var catArm = new Image();
+	catArm.src = 'img/arm.png';
+	var ax = ax0 = 554;
+	var ay = ay0 = 750-522;
+	var aw;
+	var ah;
+	//set natural width and natural height once the image is loaded
+	if (catArm.addEventListener){
+		catArm.addEventListener('load', function(){
+			aw = catArm.naturalWidth;
+			ah = catArm.naturalHeight;
+		}, false);
+	} else if (catArm.attachEvent){
+		catArm.attachEvent('onload', function(){
+			aw = catArm.naturalWidth;
+			ah = catArm.naturalHeight;
 		});
 	}
 	
@@ -326,6 +345,18 @@ $( document ).ready(function() {
 
 		//draw body
 		drawCharacter(catBody, bx, by, bw, bh);
+		
+		//draw arm
+		if(averageVolume > 0){
+			ctx.save();
+			ctx.translate(ax, (ay+ah));
+			ctx.rotate((averageVolume - volumeCenter)*Math.PI/180);
+			ctx.translate(0, -ah);
+			drawCharacter(catArm, 0, 0, aw, ah);
+			ctx.restore();
+		} else {
+			drawCharacter(catArm, ax, ay, aw, ah);
+		}
 		
 		//draw sunglasses
 		if (musicStarted == true){
