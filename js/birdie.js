@@ -27,8 +27,11 @@ $( document ).ready(function() {
 	
 	var volumeCenter = 87;
 	
+	//illustor graphics variables
+	var illustratorOffsetX = 170;
+	var illustratorOffsetY = 130;
+	
 	//wave variables
-
 		//amount to move waves
 		var waveOffset = 0;
 	
@@ -121,7 +124,7 @@ $( document ).ready(function() {
 		frame ++;
 		clear();
 		
-		if (waveOffset == 100) waveOffset = 0;
+		if (waveOffset == waveInterval) waveOffset = 0;
 		
 		// waves/Path
 	      ctx.save();
@@ -162,6 +165,41 @@ $( document ).ready(function() {
 	      ctx.restore();
 		
 		waveOffset ++;
+		
+		//draw surfboard
+		  // surfboard/Group/Path
+	      ctx.save();
+	      ctx.beginPath();
+	      ctx.moveTo(443.9 - illustratorOffsetX, 651.6 - illustratorOffsetY);
+	      ctx.bezierCurveTo(455.7 - illustratorOffsetX, 675.9 - illustratorOffsetY, 441.7 - illustratorOffsetX, 690.9 - illustratorOffsetY, 441.7 - illustratorOffsetX, 690.9 - illustratorOffsetY);
+	      ctx.bezierCurveTo(460.2 - illustratorOffsetX, 682.5 - illustratorOffsetY, 467.1 - illustratorOffsetX, 653.0 - illustratorOffsetY, 467.1 - illustratorOffsetX, 653.0 - illustratorOffsetY);
+	      ctx.lineTo(443.9 - illustratorOffsetX, 651.6 - illustratorOffsetY);
+	      ctx.closePath();
+	      ctx.fillStyle = "rgb(255, 255, 255)";
+	      ctx.fill();
+	      ctx.lineWidth = 2.0;
+	      ctx.lineJoin = "miter";
+	      ctx.miterLimit = 4.0;
+	      ctx.stroke();
+
+	      // surfboard/Group/Path
+	      ctx.beginPath();
+	      ctx.moveTo(430.4 - illustratorOffsetX, 658.9 - illustratorOffsetY);
+	      ctx.bezierCurveTo(538.4 - illustratorOffsetX, 694.1 - illustratorOffsetY, 755.8 - illustratorOffsetX, 694.5 - illustratorOffsetY, 817.6 - illustratorOffsetX, 681.6 - illustratorOffsetY);
+	      ctx.bezierCurveTo(759.4 - illustratorOffsetX, 652.1 - illustratorOffsetY, 514.2 - illustratorOffsetX, 623.6 - illustratorOffsetY, 438.4 - illustratorOffsetX, 636.6 - illustratorOffsetY);
+	      ctx.bezierCurveTo(427.6 - illustratorOffsetX, 637.8 - illustratorOffsetY, 420.9 - illustratorOffsetX, 649.0 - illustratorOffsetY, 430.4 - illustratorOffsetX, 658.9 - illustratorOffsetY);
+	      ctx.closePath();
+	      ctx.fill();
+	      ctx.stroke();
+
+	      // surfboard/Group/Path
+	      ctx.beginPath();
+	      ctx.moveTo(428.0 - illustratorOffsetX, 643.7 - illustratorOffsetY);
+	      ctx.lineTo(817.6 - illustratorOffsetX, 681.6 - illustratorOffsetY);
+	      ctx.lineWidth = 1.0;
+	      ctx.strokeStyle = "rgb(126, 53, 0)";
+	      ctx.stroke();
+	      ctx.restore();
 		
 		//draw tail
 		if(averageVolume > 0){
@@ -356,6 +394,10 @@ $( document ).ready(function() {
         average = values / length;
         return average;
     }
+	
+	function getRandomInt (min, max) {
+	    return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
 	
 	$('button#play').on('click', startDrawing );
 //end document ready	
