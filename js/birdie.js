@@ -27,6 +27,8 @@ $( document ).ready(function() {
 	
 	var volumeCenter = 87;
 	
+	var framesBetweenShift = 30;
+	
 	//illustor graphics variables
 	var illustratorOffsetX = 170;
 	var illustratorOffsetY = 130;
@@ -37,6 +39,9 @@ $( document ).ready(function() {
 	
 		//pixels between peaks of waves
 		var waveInterval = 100;
+		
+	//surfboard variables
+	var surfboardPosition = 1;
 
 	var catBody = new Image();
 	catBody.src = 'img/body.png';
@@ -124,6 +129,7 @@ $( document ).ready(function() {
 		frame ++;
 		clear();
 		
+		//move waves smoothly
 		if (waveOffset == waveInterval) waveOffset = 0;
 		
 		// waves/Path
@@ -167,39 +173,114 @@ $( document ).ready(function() {
 		waveOffset ++;
 		
 		//draw surfboard
-		  // surfboard/Group/Path
-	      ctx.save();
-	      ctx.beginPath();
-	      ctx.moveTo(443.9 - illustratorOffsetX, 651.6 - illustratorOffsetY);
-	      ctx.bezierCurveTo(455.7 - illustratorOffsetX, 675.9 - illustratorOffsetY, 441.7 - illustratorOffsetX, 690.9 - illustratorOffsetY, 441.7 - illustratorOffsetX, 690.9 - illustratorOffsetY);
-	      ctx.bezierCurveTo(460.2 - illustratorOffsetX, 682.5 - illustratorOffsetY, 467.1 - illustratorOffsetX, 653.0 - illustratorOffsetY, 467.1 - illustratorOffsetX, 653.0 - illustratorOffsetY);
-	      ctx.lineTo(443.9 - illustratorOffsetX, 651.6 - illustratorOffsetY);
-	      ctx.closePath();
-	      ctx.fillStyle = "rgb(255, 255, 255)";
-	      ctx.fill();
-	      ctx.lineWidth = 2.0;
-	      ctx.lineJoin = "miter";
-	      ctx.miterLimit = 4.0;
-	      ctx.stroke();
+		  //determine surfboard position
+		  if (frame % framesBetweenShift == 0){
+		  	surfboardPosition = getRandomInt(1,3);
+		  }
+		
+		  if (surfboardPosition == 1){
+		 	 // surfboard 1 - mid
+		      ctx.save();
+		      ctx.beginPath();
+		      ctx.moveTo(443.9 - illustratorOffsetX, 651.6 - illustratorOffsetY);
+		      ctx.bezierCurveTo(455.7 - illustratorOffsetX, 675.9 - illustratorOffsetY, 441.7 - illustratorOffsetX, 690.9 - illustratorOffsetY, 441.7 - illustratorOffsetX, 690.9 - illustratorOffsetY);
+		      ctx.bezierCurveTo(460.2 - illustratorOffsetX, 682.5 - illustratorOffsetY, 467.1 - illustratorOffsetX, 653.0 - illustratorOffsetY, 467.1 - illustratorOffsetX, 653.0 - illustratorOffsetY);
+		      ctx.lineTo(443.9 - illustratorOffsetX, 651.6 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.fillStyle = "rgb(255, 255, 255)";
+		      ctx.fill();
+		      ctx.lineWidth = 2.0;
+		      ctx.lineJoin = "miter";
+		      ctx.miterLimit = 4.0;
+		      ctx.stroke();
 
-	      // surfboard/Group/Path
-	      ctx.beginPath();
-	      ctx.moveTo(430.4 - illustratorOffsetX, 658.9 - illustratorOffsetY);
-	      ctx.bezierCurveTo(538.4 - illustratorOffsetX, 694.1 - illustratorOffsetY, 755.8 - illustratorOffsetX, 694.5 - illustratorOffsetY, 817.6 - illustratorOffsetX, 681.6 - illustratorOffsetY);
-	      ctx.bezierCurveTo(759.4 - illustratorOffsetX, 652.1 - illustratorOffsetY, 514.2 - illustratorOffsetX, 623.6 - illustratorOffsetY, 438.4 - illustratorOffsetX, 636.6 - illustratorOffsetY);
-	      ctx.bezierCurveTo(427.6 - illustratorOffsetX, 637.8 - illustratorOffsetY, 420.9 - illustratorOffsetX, 649.0 - illustratorOffsetY, 430.4 - illustratorOffsetX, 658.9 - illustratorOffsetY);
-	      ctx.closePath();
-	      ctx.fill();
-	      ctx.stroke();
+		      // surfboard 1 - mid
+		      ctx.beginPath();
+		      ctx.moveTo(430.4 - illustratorOffsetX, 658.9 - illustratorOffsetY);
+		      ctx.bezierCurveTo(538.4 - illustratorOffsetX, 694.1 - illustratorOffsetY, 755.8 - illustratorOffsetX, 694.5 - illustratorOffsetY, 817.6 - illustratorOffsetX, 681.6 - illustratorOffsetY);
+		      ctx.bezierCurveTo(759.4 - illustratorOffsetX, 652.1 - illustratorOffsetY, 514.2 - illustratorOffsetX, 623.6 - illustratorOffsetY, 438.4 - illustratorOffsetX, 636.6 - illustratorOffsetY);
+		      ctx.bezierCurveTo(427.6 - illustratorOffsetX, 637.8 - illustratorOffsetY, 420.9 - illustratorOffsetX, 649.0 - illustratorOffsetY, 430.4 - illustratorOffsetX, 658.9 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.fill();
+		      ctx.stroke();
 
-	      // surfboard/Group/Path
-	      ctx.beginPath();
-	      ctx.moveTo(428.0 - illustratorOffsetX, 643.7 - illustratorOffsetY);
-	      ctx.lineTo(817.6 - illustratorOffsetX, 681.6 - illustratorOffsetY);
-	      ctx.lineWidth = 1.0;
-	      ctx.strokeStyle = "rgb(126, 53, 0)";
-	      ctx.stroke();
-	      ctx.restore();
+		      // surfboard 1 - mid
+		      ctx.beginPath();
+		      ctx.moveTo(428.0 - illustratorOffsetX, 643.7 - illustratorOffsetY);
+		      ctx.lineTo(817.6 - illustratorOffsetX, 681.6 - illustratorOffsetY);
+		      ctx.lineWidth = 1.0;
+		      ctx.strokeStyle = "rgb(126, 53, 0)";
+		      ctx.stroke();
+		      ctx.restore();
+	  	  } else if (surfboardPosition == 2){
+		  	  // surfboard 2 - down
+		      ctx.save();
+		      ctx.beginPath();
+		      ctx.moveTo(448.9 - illustratorOffsetX, 617.5 - illustratorOffsetY);
+		      ctx.bezierCurveTo(455.8 - illustratorOffsetX, 643.6 - illustratorOffsetY, 439.2 - illustratorOffsetX, 655.6 - illustratorOffsetY, 439.2 - illustratorOffsetX, 655.6 - illustratorOffsetY);
+		      ctx.bezierCurveTo(458.9 - illustratorOffsetX, 651.0 - illustratorOffsetY, 471.4 - illustratorOffsetX, 623.3 - illustratorOffsetY, 471.4 - illustratorOffsetX, 623.3 - illustratorOffsetY);
+		      ctx.lineTo(448.9 - illustratorOffsetX, 617.5 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.fillStyle = "rgb(255, 255, 255)";
+		      ctx.fill();
+		      ctx.lineWidth = 2.0;
+		      ctx.lineJoin = "miter";
+		      ctx.miterLimit = 4.0;
+		      ctx.stroke();
+
+		      // surfboard 2 - down
+		      ctx.beginPath();
+		      ctx.moveTo(434.3 - illustratorOffsetX, 622.1 - illustratorOffsetY);
+		      ctx.bezierCurveTo(533.5 - illustratorOffsetX, 677.4 - illustratorOffsetY, 746.6 - illustratorOffsetX, 719.8 - illustratorOffsetY, 809.8 - illustratorOffsetX, 719.1 - illustratorOffsetY);
+		      ctx.bezierCurveTo(758.4 - illustratorOffsetX, 679.0 - illustratorOffsetY, 523.3 - illustratorOffsetX, 603.6 - illustratorOffsetY, 446.5 - illustratorOffsetX, 601.7 - illustratorOffsetY);
+		      ctx.bezierCurveTo(435.6 - illustratorOffsetX, 600.8 - illustratorOffsetY, 426.9 - illustratorOffsetX, 610.5 - illustratorOffsetY, 434.3 - illustratorOffsetX, 622.1 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.fill();
+		      ctx.stroke();
+
+		      // surfboard 2 - down
+		      ctx.beginPath();
+		      ctx.moveTo(434.8 - illustratorOffsetX, 606.7 - illustratorOffsetY);
+		      ctx.lineTo(809.8 - illustratorOffsetX, 719.1 - illustratorOffsetY);
+		      ctx.lineWidth = 1.0;
+		      ctx.strokeStyle = "rgb(126, 53, 0)";
+		      ctx.stroke();
+		      ctx.restore();
+		  } else {
+			  // surfboard 3 - up
+		      ctx.save();
+		      ctx.beginPath();
+		      ctx.moveTo(447.2 - illustratorOffsetX, 695.3 - illustratorOffsetY);
+		      ctx.bezierCurveTo(464.5 - illustratorOffsetX, 715.9 - illustratorOffsetY, 454.7 - illustratorOffsetX, 733.9 - illustratorOffsetY, 454.7 - illustratorOffsetX, 733.9 - illustratorOffsetY);
+		      ctx.bezierCurveTo(470.5 - illustratorOffsetX, 721.3 - illustratorOffsetY, 470.0 - illustratorOffsetX, 691.0 - illustratorOffsetY, 470.0 - illustratorOffsetX, 691.0 - illustratorOffsetY);
+		      ctx.lineTo(447.2 - illustratorOffsetX, 695.3 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.fillStyle = "rgb(255, 255, 255)";
+		      ctx.fill();
+		      ctx.lineWidth = 2.0;
+		      ctx.lineJoin = "miter";
+		      ctx.miterLimit = 4.0;
+		      ctx.stroke();
+
+		      // surfboard 3 - up
+		      ctx.beginPath();
+		      ctx.moveTo(435.9 - illustratorOffsetX, 705.7 - illustratorOffsetY);
+		      ctx.bezierCurveTo(549.2 - illustratorOffsetX, 713.4 - illustratorOffsetY, 760.1 - illustratorOffsetX, 660.6 - illustratorOffsetY, 816.9 - illustratorOffsetX, 633.0 - illustratorOffsetY);
+		      ctx.bezierCurveTo(753.2 - illustratorOffsetX, 618.6 - illustratorOffsetY, 508.5 - illustratorOffsetX, 651.0 - illustratorOffsetY, 438.2 - illustratorOffsetX, 682.1 - illustratorOffsetY);
+		      ctx.bezierCurveTo(428.0 - illustratorOffsetX, 685.9 - illustratorOffsetY, 424.3 - illustratorOffsetX, 698.4 - illustratorOffsetY, 435.9 - illustratorOffsetX, 705.7 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.fill();
+		      ctx.stroke();
+
+		      // surfboard 3 - up
+		      ctx.beginPath();
+		      ctx.moveTo(429.8 - illustratorOffsetX, 691.6 - illustratorOffsetY);
+		      ctx.lineTo(816.9 - illustratorOffsetX, 633.0 - illustratorOffsetY);
+		      ctx.lineWidth = 1.0;
+		      ctx.strokeStyle = "rgb(126, 53, 0)";
+		      ctx.stroke();
+		      ctx.restore();
+	      }
 		
 		//draw tail
 		if(averageVolume > 0){
