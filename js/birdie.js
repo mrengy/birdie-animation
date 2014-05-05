@@ -469,7 +469,7 @@ $( document ).ready(function() {
 			
 		//restoring stroke style to before sunbeams
 		ctx.restore();
-	 	
+	 	ctx.strokeStyle = "rgb(0,0,0)";
 	    
 	} //end draw
 	
