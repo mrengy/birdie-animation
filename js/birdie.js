@@ -396,6 +396,81 @@ $( document ).ready(function() {
 		      ctx.restore();
 		}
 		
+		// draw sun
+		// sun/Path
+	      ctx.save();
+	      ctx.beginPath();
+	      ctx.moveTo(1300.0 - illustratorOffsetX, 130.0 - illustratorOffsetY);
+	      ctx.bezierCurveTo(1300.0 - illustratorOffsetX, 201.8 - illustratorOffsetY, 1241.8 - illustratorOffsetX, 260.0 - illustratorOffsetY, 1170.0 - illustratorOffsetX, 260.0 - illustratorOffsetY);
+	      ctx.bezierCurveTo(1098.2 - illustratorOffsetX, 260.0 - illustratorOffsetY, 1040.0 - illustratorOffsetX, 201.8 - illustratorOffsetY, 1040.0 - illustratorOffsetX, 130.0 - illustratorOffsetY);
+	      ctx.bezierCurveTo(1040.0 - illustratorOffsetX, 58.2 - illustratorOffsetY, 1098.2 - illustratorOffsetX, 0.0 - illustratorOffsetY, 1170.0 - illustratorOffsetX, 0.0 - illustratorOffsetY);
+	      ctx.bezierCurveTo(1241.8 - illustratorOffsetX, 0.0 - illustratorOffsetY, 1300.0 - illustratorOffsetX, 58.2 - illustratorOffsetY, 1300.0 - illustratorOffsetX, 130.0 - illustratorOffsetY);
+	      ctx.closePath();
+	      ctx.fillStyle = "rgb(255, 239, 30)";
+	      ctx.fill();
+		  ctx.restore();
+		
+		  //setting stroke style for all sunbeams
+		  ctx.save();
+	      ctx.lineWidth = 3.0;
+	      ctx.strokeStyle = "rgb(255, 239, 30)";
+	      ctx.lineJoin = "miter";
+	      ctx.miterLimit = 4.0;
+	
+	      	// sun/Path
+		      ctx.beginPath();
+		      ctx.moveTo(1050.0 - illustratorOffsetX, 190.0 - illustratorOffsetY);
+		      ctx.lineTo(970.0 - illustratorOffsetX, 230.0 - illustratorOffsetY);
+		      ctx.stroke();
+			  ctx.moveTo(0,0);
+		
+		      // sun/Path
+		      ctx.beginPath();
+		      ctx.moveTo(1060.0 - illustratorOffsetX, 220.0 - illustratorOffsetY);
+		      ctx.lineTo(1030.0 - illustratorOffsetX, 240.0 - illustratorOffsetY);
+		      ctx.stroke();
+			  ctx.moveTo(0,0);
+
+		      // sun/Path
+		      ctx.beginPath();
+		      ctx.moveTo(1090.0 - illustratorOffsetX, 250.0 - illustratorOffsetY);
+		      ctx.lineTo(1040.0 - illustratorOffsetX, 300.0 - illustratorOffsetY);
+		      ctx.stroke();
+			  ctx.moveTo(0,0);
+
+		      // sun/Path
+		      ctx.beginPath();
+		      ctx.moveTo(1120.0 - illustratorOffsetX, 270.0 - illustratorOffsetY);
+		      ctx.lineTo(1110.0 - illustratorOffsetX, 290.0 - illustratorOffsetY);
+		      ctx.stroke();
+			  ctx.moveTo(0,0);
+
+		      // sun/Path
+			  ctx.save();
+		      ctx.beginPath();
+		      ctx.moveTo(1150.0 - illustratorOffsetX, 280.0 - illustratorOffsetY);
+		      ctx.lineTo(1140.0 - illustratorOffsetX, 350.0 - illustratorOffsetY);
+		      ctx.stroke();
+			  ctx.moveTo(0,0);
+
+		      // sun/Path
+		      ctx.beginPath();
+		      ctx.moveTo(1030.0 - illustratorOffsetX, 160.0 - illustratorOffsetY);
+		      ctx.lineTo(1000.0 - illustratorOffsetX, 170.0 - illustratorOffsetY);
+		      ctx.stroke();
+			  ctx.moveTo(0,0);
+
+		      // sun/Path
+		      ctx.beginPath();
+		      ctx.moveTo(1030.0 - illustratorOffsetX, 130.0 - illustratorOffsetY);
+		      ctx.lineTo(950.0 - illustratorOffsetX, 150.0 - illustratorOffsetY);
+		      ctx.stroke();
+			  ctx.moveTo(0,0);
+			
+		//restoring stroke style to before sunbeams
+		ctx.restore();
+	 	
+	    
 	} //end draw
 	
 	function drawCharacter(name, x, y, w, h){
