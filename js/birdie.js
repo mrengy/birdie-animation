@@ -15,6 +15,7 @@ $( document ).ready(function() {
     var analyser, analyser2;
     var javascriptNode;
 
+	var musicStarted = false;
 	var averageVolume = averageVolume2 = 0;
 	
 	var ctx;
@@ -40,8 +41,8 @@ $( document ).ready(function() {
 		//pixels between peaks of waves
 		var waveInterval = 100;
 		
-	//surfboard variables
-	var surfboardPosition = 1;
+	//surfboard position - will be set randomly to 1, 2, or 3 after music starts
+	var surfboardPosition = 0;
 
 	var catBody = new Image();
 	catBody.src = 'img/body.png';
@@ -174,7 +175,7 @@ $( document ).ready(function() {
 		
 		//draw surfboard
 		  //determine surfboard position
-		  if (frame % framesBetweenShift == 0){
+		  if (musicStarted == true && frame % framesBetweenShift == 0){
 		  	surfboardPosition = getRandomInt(1,3);
 		  }
 		
@@ -431,6 +432,7 @@ $( document ).ready(function() {
     function playSound(buffer) {
         sourceNode.buffer = buffer;
         sourceNode.start(0);
+		musicStarted = true;
     }
 
 	// log if an error occurs
