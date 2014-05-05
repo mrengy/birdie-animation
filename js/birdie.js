@@ -324,36 +324,77 @@ $( document ).ready(function() {
 		//draw body
 		drawCharacter(catBody, bx, by, bw, bh);
 		
-		// create the meters
-        /*
-		ctx.fillRect(0,130-averageVolume,25,130);
-        ctx.fillRect(30,130-averageVolume2,25,130);
-		*/
-		
-		//show audio levels
-		/*
-		console.log(averageVolume);
-		console.log(averageVolume2);
-		*/
-		
-		/*
-		//create a new random emflake
-		emflakew = getRandomInt(50, ew);
-		emflakeh = (emflakew * eh / ew);
-		emflakex = getRandomInt(0 - (emflakew/2), WIDTH - (emflakew/2));
-		
-		//move all emflakes
-		
-		if (value.thisy <= HEIGHT){
-			drawCharacter(emflake, value.thisx, value.thisy, value.thisw, value.thish);
-			value.thisy += value.increment;
-		} 
-		else {
-			//remove the emflake from the array if it is off screen
-			emflakes.splice(index, 1);
-			return false;
+		//draw sunglasses
+		if (musicStarted == true){
+			  // sunglasses/Group/Path
+		      ctx.save();
+		      ctx.globalAlpha = 0.34;
+		      ctx.beginPath();
+		      ctx.moveTo(710.6 - illustratorOffsetX, 421.0 - illustratorOffsetY);
+		      ctx.bezierCurveTo(715.1 - illustratorOffsetX, 426.6 - illustratorOffsetY, 714.3 - illustratorOffsetX, 434.7 - illustratorOffsetY, 708.7 - illustratorOffsetX, 439.2 - illustratorOffsetY);
+		      ctx.bezierCurveTo(703.2 - illustratorOffsetX, 443.6 - illustratorOffsetY, 695.0 - illustratorOffsetX, 442.7 - illustratorOffsetY, 690.5 - illustratorOffsetX, 437.1 - illustratorOffsetY);
+		      ctx.bezierCurveTo(686.0 - illustratorOffsetX, 431.5 - illustratorOffsetY, 686.9 - illustratorOffsetX, 423.4 - illustratorOffsetY, 692.4 - illustratorOffsetX, 418.9 - illustratorOffsetY);
+		      ctx.bezierCurveTo(698.0 - illustratorOffsetX, 414.4 - illustratorOffsetY, 706.1 - illustratorOffsetX, 415.4 - illustratorOffsetY, 710.6 - illustratorOffsetX, 421.0 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.fill();
+
+		      // sunglasses/Group/Path
+		      ctx.beginPath();
+		      ctx.moveTo(744.1 - illustratorOffsetX, 394.1 - illustratorOffsetY);
+		      ctx.bezierCurveTo(748.6 - illustratorOffsetX, 399.7 - illustratorOffsetY, 747.8 - illustratorOffsetX, 407.8 - illustratorOffsetY, 742.2 - illustratorOffsetX, 412.3 - illustratorOffsetY);
+		      ctx.bezierCurveTo(736.7 - illustratorOffsetX, 416.7 - illustratorOffsetY, 728.5 - illustratorOffsetX, 415.8 - illustratorOffsetY, 724.0 - illustratorOffsetX, 410.2 - illustratorOffsetY);
+		      ctx.bezierCurveTo(719.5 - illustratorOffsetX, 404.6 - illustratorOffsetY, 720.4 - illustratorOffsetX, 396.5 - illustratorOffsetY, 725.9 - illustratorOffsetX, 392.0 - illustratorOffsetY);
+		      ctx.bezierCurveTo(731.5 - illustratorOffsetX, 387.5 - illustratorOffsetY, 739.6 - illustratorOffsetX, 388.5 - illustratorOffsetY, 744.1 - illustratorOffsetX, 394.1 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.fill();
+
+		      // sunglasses/Group/Path
+		      ctx.globalAlpha = 1.00;
+		      ctx.beginPath();
+		      ctx.moveTo(710.6 - illustratorOffsetX, 421.0 - illustratorOffsetY);
+		      ctx.bezierCurveTo(715.1 - illustratorOffsetX, 426.6 - illustratorOffsetY, 714.3 - illustratorOffsetX, 434.7 - illustratorOffsetY, 708.7 - illustratorOffsetX, 439.2 - illustratorOffsetY);
+		      ctx.bezierCurveTo(703.2 - illustratorOffsetX, 443.6 - illustratorOffsetY, 695.0 - illustratorOffsetX, 442.7 - illustratorOffsetY, 690.5 - illustratorOffsetX, 437.1 - illustratorOffsetY);
+		      ctx.bezierCurveTo(686.0 - illustratorOffsetX, 431.5 - illustratorOffsetY, 686.9 - illustratorOffsetX, 423.4 - illustratorOffsetY, 692.4 - illustratorOffsetX, 418.9 - illustratorOffsetY);
+		      ctx.bezierCurveTo(698.0 - illustratorOffsetX, 414.4 - illustratorOffsetY, 706.1 - illustratorOffsetX, 415.4 - illustratorOffsetY, 710.6 - illustratorOffsetX, 421.0 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.lineWidth = 2.0;
+		      ctx.strokeStyle = "rgb(255, 37, 30)";
+		      ctx.lineJoin = "miter";
+		      ctx.miterLimit = 4.0;
+		      ctx.stroke();
+
+		      // sunglasses/Group/Path
+		      ctx.beginPath();
+		      ctx.moveTo(744.1 - illustratorOffsetX, 394.1 - illustratorOffsetY);
+		      ctx.bezierCurveTo(748.6 - illustratorOffsetX, 399.7 - illustratorOffsetY, 747.8 - illustratorOffsetX, 407.8 - illustratorOffsetY, 742.2 - illustratorOffsetX, 412.3 - illustratorOffsetY);
+		      ctx.bezierCurveTo(736.7 - illustratorOffsetX, 416.7 - illustratorOffsetY, 728.5 - illustratorOffsetX, 415.8 - illustratorOffsetY, 724.0 - illustratorOffsetX, 410.2 - illustratorOffsetY);
+		      ctx.bezierCurveTo(719.5 - illustratorOffsetX, 404.6 - illustratorOffsetY, 720.4 - illustratorOffsetX, 396.5 - illustratorOffsetY, 725.9 - illustratorOffsetX, 392.0 - illustratorOffsetY);
+		      ctx.bezierCurveTo(731.5 - illustratorOffsetX, 387.5 - illustratorOffsetY, 739.6 - illustratorOffsetX, 388.5 - illustratorOffsetY, 744.1 - illustratorOffsetX, 394.1 - illustratorOffsetY);
+		      ctx.closePath();
+		      ctx.stroke();
+
+		      // sunglasses/Group/Path
+		      ctx.beginPath();
+		      ctx.moveTo(725.9 - illustratorOffsetX, 412.5 - illustratorOffsetY);
+		      ctx.bezierCurveTo(725.9 - illustratorOffsetX, 412.5 - illustratorOffsetY, 719.6 - illustratorOffsetX, 404.7 - illustratorOffsetY, 712.9 - illustratorOffsetX, 410.1 - illustratorOffsetY);
+		      ctx.bezierCurveTo(706.2 - illustratorOffsetX, 415.5 - illustratorOffsetY, 710.6 - illustratorOffsetX, 421.0 - illustratorOffsetY, 710.6 - illustratorOffsetX, 421.0 - illustratorOffsetY);
+		      ctx.lineWidth = 1.0;
+		      ctx.stroke();
+
+		      // sunglasses/Group/Path
+		      ctx.beginPath();
+		      ctx.moveTo(692.4 - illustratorOffsetX, 439.5 - illustratorOffsetY);
+		      ctx.bezierCurveTo(692.4 - illustratorOffsetX, 439.5 - illustratorOffsetY, 679.9 - illustratorOffsetX, 423.9 - illustratorOffsetY, 673.2 - illustratorOffsetX, 429.2 - illustratorOffsetY);
+		      ctx.lineWidth = 2.0;
+		      ctx.stroke();
+
+		      // sunglasses/Group/Path
+		      ctx.beginPath();
+		      ctx.moveTo(746.0 - illustratorOffsetX, 396.4 - illustratorOffsetY);
+		      ctx.bezierCurveTo(746.0 - illustratorOffsetX, 396.4 - illustratorOffsetY, 733.5 - illustratorOffsetX, 380.8 - illustratorOffsetY, 740.2 - illustratorOffsetX, 375.4 - illustratorOffsetY);
+		      ctx.stroke();
+		      ctx.restore();
 		}
-		*/
 		
 	} //end draw
 	
