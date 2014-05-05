@@ -43,6 +43,9 @@ $( document ).ready(function() {
 		
 	//surfboard position - will be set randomly to 1, 2, or 3 after music starts
 	var surfboardPosition = 0;
+	
+	//sunbeam variables
+	var showSunbeam1 = showSunbeam2 = showSunbeam3 = showSunbeam4 = showSunbeam5 = showSunbeam6 = showSunbeam7 = false; 
 
 	var catBody = new Image();
 	catBody.src = 'img/body.png';
@@ -397,7 +400,7 @@ $( document ).ready(function() {
 		}
 		
 		// draw sun
-		// sun/Path
+		// sun
 	      ctx.save();
 	      ctx.beginPath();
 	      ctx.moveTo(1300.0 - illustratorOffsetX, 130.0 - illustratorOffsetY);
@@ -416,56 +419,81 @@ $( document ).ready(function() {
 	      ctx.strokeStyle = "rgb(255, 239, 30)";
 	      ctx.lineJoin = "miter";
 	      ctx.miterLimit = 4.0;
-	
-	      	// sun/Path
-		      ctx.beginPath();
-		      ctx.moveTo(1050.0 - illustratorOffsetX, 190.0 - illustratorOffsetY);
-		      ctx.lineTo(970.0 - illustratorOffsetX, 230.0 - illustratorOffsetY);
-		      ctx.stroke();
-			  ctx.moveTo(0,0);
+			  
+			  //when music starts, with every half shift interval, randomly determine whether to show each sunbeam
+			  if (musicStarted == true && frame % framesBetweenShift == 0) {
+				showSunbeam1 = ( getRandomInt(1,2) == 1 ? true : false );
+				showSunbeam2 = ( getRandomInt(1,2) == 1 ? true : false );
+				showSunbeam3 = ( getRandomInt(1,2) == 1 ? true : false );
+				showSunbeam4 = ( getRandomInt(1,2) == 1 ? true : false );
+				showSunbeam5 = ( getRandomInt(1,2) == 1 ? true : false );
+				showSunbeam6 = ( getRandomInt(1,2) == 1 ? true : false );
+				showSunbeam7 = ( getRandomInt(1,2) == 1 ? true : false );
+			  }	
+	      	 
+		 	  if (showSunbeam1 == true){
+				// sunbeam
+			      ctx.beginPath();
+			      ctx.moveTo(1050.0 - illustratorOffsetX, 190.0 - illustratorOffsetY);
+			      ctx.lineTo(970.0 - illustratorOffsetX, 230.0 - illustratorOffsetY);
+			      ctx.stroke();
+				  ctx.moveTo(0,0);
+		  	  }
 		
-		      // sun/Path
-		      ctx.beginPath();
-		      ctx.moveTo(1060.0 - illustratorOffsetX, 220.0 - illustratorOffsetY);
-		      ctx.lineTo(1030.0 - illustratorOffsetX, 240.0 - illustratorOffsetY);
-		      ctx.stroke();
-			  ctx.moveTo(0,0);
+			  if (showSunbeam2 == true){
+		      	// sunbeam
+			      ctx.beginPath();
+			      ctx.moveTo(1060.0 - illustratorOffsetX, 220.0 - illustratorOffsetY);
+			      ctx.lineTo(1030.0 - illustratorOffsetX, 240.0 - illustratorOffsetY);
+			      ctx.stroke();
+				  ctx.moveTo(0,0);
+		  	  }
+		
+			  if (showSunbeam3 == true){
+		      	// sunbeam
+			      ctx.beginPath();
+			      ctx.moveTo(1090.0 - illustratorOffsetX, 250.0 - illustratorOffsetY);
+			      ctx.lineTo(1040.0 - illustratorOffsetX, 300.0 - illustratorOffsetY);
+			      ctx.stroke();
+				  ctx.moveTo(0,0);
+		  	  }
+			  if (showSunbeam4 == true){
+		      	// sunbeam
+			      ctx.beginPath();
+			      ctx.moveTo(1120.0 - illustratorOffsetX, 270.0 - illustratorOffsetY);
+			      ctx.lineTo(1110.0 - illustratorOffsetX, 290.0 - illustratorOffsetY);
+			      ctx.stroke();
+				  ctx.moveTo(0,0);
+			  }
 
-		      // sun/Path
-		      ctx.beginPath();
-		      ctx.moveTo(1090.0 - illustratorOffsetX, 250.0 - illustratorOffsetY);
-		      ctx.lineTo(1040.0 - illustratorOffsetX, 300.0 - illustratorOffsetY);
-		      ctx.stroke();
-			  ctx.moveTo(0,0);
-
-		      // sun/Path
-		      ctx.beginPath();
-		      ctx.moveTo(1120.0 - illustratorOffsetX, 270.0 - illustratorOffsetY);
-		      ctx.lineTo(1110.0 - illustratorOffsetX, 290.0 - illustratorOffsetY);
-		      ctx.stroke();
-			  ctx.moveTo(0,0);
-
-		      // sun/Path
-			  ctx.save();
-		      ctx.beginPath();
-		      ctx.moveTo(1150.0 - illustratorOffsetX, 280.0 - illustratorOffsetY);
-		      ctx.lineTo(1140.0 - illustratorOffsetX, 350.0 - illustratorOffsetY);
-		      ctx.stroke();
-			  ctx.moveTo(0,0);
-
-		      // sun/Path
-		      ctx.beginPath();
-		      ctx.moveTo(1030.0 - illustratorOffsetX, 160.0 - illustratorOffsetY);
-		      ctx.lineTo(1000.0 - illustratorOffsetX, 170.0 - illustratorOffsetY);
-		      ctx.stroke();
-			  ctx.moveTo(0,0);
-
-		      // sun/Path
-		      ctx.beginPath();
-		      ctx.moveTo(1030.0 - illustratorOffsetX, 130.0 - illustratorOffsetY);
-		      ctx.lineTo(950.0 - illustratorOffsetX, 150.0 - illustratorOffsetY);
-		      ctx.stroke();
-			  ctx.moveTo(0,0);
+			  if (showSunbeam5 == true){
+		     	// sunbeam
+				  ctx.save();
+			      ctx.beginPath();
+			      ctx.moveTo(1150.0 - illustratorOffsetX, 280.0 - illustratorOffsetY);
+			      ctx.lineTo(1140.0 - illustratorOffsetX, 350.0 - illustratorOffsetY);
+			      ctx.stroke();
+				  ctx.moveTo(0,0);
+			  }
+			
+			
+			  if (showSunbeam6 == true){
+		      	// sunbeam
+			      ctx.beginPath();
+			      ctx.moveTo(1030.0 - illustratorOffsetX, 160.0 - illustratorOffsetY);
+			      ctx.lineTo(1000.0 - illustratorOffsetX, 170.0 - illustratorOffsetY);
+			      ctx.stroke();
+				  ctx.moveTo(0,0);
+			  }
+			
+			  if (showSunbeam7 == true){
+		      	// sunbeam
+			      ctx.beginPath();
+			      ctx.moveTo(1030.0 - illustratorOffsetX, 130.0 - illustratorOffsetY);
+			      ctx.lineTo(950.0 - illustratorOffsetX, 150.0 - illustratorOffsetY);
+			      ctx.stroke();
+				  ctx.moveTo(0,0);
+			  }
 			
 		//restoring stroke style to before sunbeams
 		ctx.restore();
