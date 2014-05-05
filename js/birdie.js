@@ -30,6 +30,9 @@ $( document ).ready(function() {
 	
 	var framesBetweenShift = 30;
 	
+	//arm variables
+	var randomArmAdjustment = 0;
+	
 	//illustor graphics variables
 	var illustratorOffsetX = 170;
 	var illustratorOffsetY = 130;
@@ -346,11 +349,15 @@ $( document ).ready(function() {
 		//draw body
 		drawCharacter(catBody, bx, by, bw, bh);
 		
+		if (musicStarted == true && frame % framesBetweenShift == 0){
+			randomArmAdjustment = getRandomInt(-30,30);
+		}
+		
 		//draw arm
 		if(averageVolume > 0){
 			ctx.save();
 			ctx.translate(ax, (ay+ah));
-			ctx.rotate((averageVolume - volumeCenter)*Math.PI/180);
+			ctx.rotate( ( (averageVolume - volumeCenter) + randomArmAdjustment ) *Math.PI/180);
 			ctx.translate(0, -ah);
 			drawCharacter(catArm, 0, 0, aw, ah);
 			ctx.restore();
