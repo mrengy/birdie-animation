@@ -353,18 +353,6 @@ $( document ).ready(function() {
 			randomArmAdjustment = getRandomInt(-30,30);
 		}
 		
-		//draw arm
-		if(averageVolume > 0){
-			ctx.save();
-			ctx.translate(ax, (ay+ah));
-			ctx.rotate( ( (averageVolume - volumeCenter) + randomArmAdjustment ) *Math.PI/180);
-			ctx.translate(0, -ah);
-			drawCharacter(catArm, 0, 0, aw, ah);
-			ctx.restore();
-		} else {
-			drawCharacter(catArm, ax, ay, aw, ah);
-		}
-		
 		//draw sunglasses
 		if (musicStarted == true){
 			  // sunglasses/Group/Path
@@ -435,6 +423,18 @@ $( document ).ready(function() {
 		      ctx.bezierCurveTo(746.0 - illustratorOffsetX, 396.4 - illustratorOffsetY, 733.5 - illustratorOffsetX, 380.8 - illustratorOffsetY, 740.2 - illustratorOffsetX, 375.4 - illustratorOffsetY);
 		      ctx.stroke();
 		      ctx.restore();
+		}
+		
+		//draw arm
+		if(averageVolume > 0){
+			ctx.save();
+			ctx.translate(ax, (ay+ah));
+			ctx.rotate( ( (averageVolume - volumeCenter) + randomArmAdjustment ) *Math.PI/180);
+			ctx.translate(0, -ah);
+			drawCharacter(catArm, 0, 0, aw, ah);
+			ctx.restore();
+		} else {
+			drawCharacter(catArm, ax, ay, aw, ah);
 		}
 		
 		// draw sun
