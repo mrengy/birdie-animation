@@ -327,13 +327,6 @@ $( document ).ready(function() {
 			//set head height proportionally to head width
 			hh = (hw * (hh0 / hw0) );
 			
-			/*
-			var headRatio = (hh0 / hw0);
-			console.log('headRatio = '+headRatio);
-			console.log('hw = '+hw);
-			console.log('hh = '+hh);
-			*/
-			
 			//pulse head size
 			ctx.save();
 			ctx.translate( hx, hy );
