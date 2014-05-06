@@ -26,7 +26,7 @@ $( document ).ready(function() {
 	
 	var increment = 1;
 	
-	var volumeCenter = 87;
+	var volumeCenter = 70;
 	
 	var framesBetweenShift = 30;
 	
