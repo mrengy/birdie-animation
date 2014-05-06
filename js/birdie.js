@@ -664,6 +664,23 @@ $( document ).ready(function() {
 	    return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 	
+	//iOS audio hack http://paulbakaus.com/tutorials/html5/web-audio-on-ios/
+	window.addEventListener('touchstart', function() {
+
+		// create empty buffer
+		var buffer = myContext.createBuffer(1, 1, 22050);
+		var source = myContext.createBufferSource();
+		source.buffer = buffer;
+
+		// connect to output (your speakers)
+		source.connect(myContext.destination);
+
+		// play the file
+		source.noteOn(0);
+
+	}, false);
+	//end iOS audio hack
+	
 	$('button#play').on('click', startDrawing );
 //end document ready	
 });
