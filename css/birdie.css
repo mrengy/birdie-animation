@@ -73,5 +73,5 @@ button{
 }
 
 #WAAPISIMFLASHOBJ{
-	display:none;
+	visibility:hidden;
 }
