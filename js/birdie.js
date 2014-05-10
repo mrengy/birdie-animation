@@ -140,6 +140,7 @@ $( document ).ready(function() {
 	}
 	
 	function startDrawing(){
+		/*
 		//start iOS audio hack
 		// create empty buffer
 			var buffer = context.createBuffer(1, 1, 22050);
@@ -152,6 +153,7 @@ $( document ).ready(function() {
 			// play the file
 			source.noteOn(0);
 		//end iOS audio hack
+		*/
 		
 		$('button#play').hide();
 		intervalId = setInterval(draw, 10);
@@ -670,7 +672,6 @@ $( document ).ready(function() {
 	    return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 	
-	/*
 	//iOS audio hack http://paulbakaus.com/tutorials/html5/web-audio-on-ios/
 	window.addEventListener('touchstart', function() {
 
@@ -687,7 +688,6 @@ $( document ).ready(function() {
 
 	}, false);
 	//end iOS audio hack
-	*/
 	
 	$('button#play').on('click', startDrawing );
 //end document ready	
