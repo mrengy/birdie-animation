@@ -45,6 +45,13 @@
         <script src="js/birdie.js"></script>
 
         <script type="text/javascript">
+			console.log(document.URL);
+			if (document.URL.indexOf('file://localhost') >= 0){
+				console.log('local');
+			}
+			if (document.URL.indexOf('file://localhost') == 'undefined'){
+				console.log('remote');
+			}
 		  //only load google analytics if this is not running locally
 		/*  
 		if (document.URL.indexOf("file://localhost") >= 0){
