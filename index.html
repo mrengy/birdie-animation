@@ -50,7 +50,7 @@
 			if (document.URL.indexOf('file://localhost') >= 0){
 				console.log('local');
 			}
-			if (document.URL.indexOf('file://localhost') == 'undefined'){
+			if (document.URL.indexOf('file://localhost') < 0){
 				console.log('remote');
 			}
 		  //only load google analytics if this is not running locally
