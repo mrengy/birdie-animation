@@ -72,36 +72,6 @@ button{
 	background-image:url('../img/play-down.png');
 }
 
-#mute{
-	display:none;
-}
-
-.audio #mute{
-	display:block;
-	width:80px;
-	height:80px;
-	top:0;
-	right:0;
-	/*background-position: 20px 10px ;*/
-	background-color: #FFF;
-	background-image:url('../img/unmuted.png');
-	border-radius: 0 0 0 60px;
-	moz-border-radius: 0 0 0 60px;
-	webkit-border-radius: 0 0 0 60px;
-}
-
-#mute:active{
-	background-image:url('../img/unmuted-down.png');
-}
-
-#mute.muted{
-	background-image:url("../img/muted.png");
-}
-
-#mute.muted:active{
-	background-image:url("../img/muted-down.png");
-}
-
-audio{
+#WAAPISIMFLASHOBJ{
 	display:none;
 }
